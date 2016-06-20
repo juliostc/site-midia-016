@@ -1,0 +1,9 @@
+<div class="profiles index">
+  <ul>
+    <li ng-repeat="profile in ctrl.profiles">
+      <a ng-href="/perfis/{{ profile.id }}" ng-title="{{ profile.name }}">
+        {{ profile.name }}
+      </a>
+    </li>
+  </ul>
+</div>

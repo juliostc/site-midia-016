@@ -1,0 +1,46 @@
+{
+  "name": "cinemidia-2016",
+  "version": "0.0.1",
+  "main": "app.js",
+  "scripts": {
+    "build": "./node_modules/.bin/gulp build",
+    "watch": "./node_modules/.bin/gulp watch",
+    "start": "node app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+ssh://git@github.com/juliostc/site-midia-016.git"
+  },
+  "engines": {
+    "node": "~6.2.2",
+    "npm": "~3.9.5"
+  },
+  "private": true,
+  "homepage": "https://github.com/juliostc/site-midia-016#readme",
+  "dependencies": {
+    "angular": "^1.5.7",
+    "angular-route": "^1.5.7",
+    "del": "^2.2.0",
+    "express": "^4.14.0",
+    "gulp": "^3.9.1",
+    "gulp-batch": "^1.0.5",
+    "gulp-cssnano": "^2.1.2",
+    "gulp-environments": "^0.1.1",
+    "gulp-image": "^2.0.1",
+    "gulp-include": "^2.2.1",
+    "gulp-less": "^3.1.0",
+    "gulp-ng-annotate": "^2.0.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-watch": "^4.3.8",
+    "jquery": "^3.0.0",
+    "path": "^0.12.7",
+    "sugar": "^1.4.1"
+  },
+  "bugs": {
+    "url": "https://github.com/juliostc/site-midia-016/issues"
+  },
+  "devDependencies": {},
+  "license": "ISC"
+}

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="pt-BR" ng-app="cinemidia" ng-controller="MainController as ctrl" ng-cloak ng-strict-di>
+  <head>
+    <meta charset="utf-8">
+
+    <title ng-bind="ctrl.getFullTitle()"></title>
+
+    <link href="/application.css" rel="stylesheet">
+    <script type="text/javascript" src="/application.js"></script>
+    <base href="/">
+  </head>
+
+  <body>
+    <nav class="menu">
+      <ul>
+        <li>
+          <a href="/perfis">Perfis</a>
+        </li>
+        <li>
+          <a href="/sobre">Sobre</a>
+        </li>
+      </ul>
+    </nav>
+
+    <ng-view></ng-view>
+  </body>
+</html>
