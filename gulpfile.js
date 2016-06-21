@@ -16,7 +16,7 @@ const gulp = require("gulp"),
 if (!process.env.NODE_ENV) { environments.current(environments.development); }
 
 const publicFolder = "./public/",
-      assetsFolder = path.join(publicFolder, "assets");
+assetsFolder = path.join(publicFolder, "assets");
 
 gulp.task("css", () => {
   return gulp.src("./src/css/application.css.less")
@@ -46,9 +46,8 @@ gulp.task("views", () => {
 });
 
 gulp.task("assets", () => {
-  return gulp.src("./src/assets/**/*")
-    .pipe(image())
-    .pipe(gulp.dest(assetsFolder));
+//.pipe(image())
+  return gulp.src("./src/assets/**/*").pipe(gulp.dest(assetsFolder));
 });
 
 gulp.task("clean", () => del.sync(publicFolder));
