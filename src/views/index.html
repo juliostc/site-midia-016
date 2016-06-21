@@ -1,27 +1,46 @@
 <!DOCTYPE html>
-<html lang="pt-BR" ng-app="cinemidia" ng-controller="MainController as ctrl" ng-cloak ng-strict-di>
-  <head>
+<html lang="pt-BR" ng-app="midiafy" ng-controller="MainController as ctrl" ng-cloak ng-strict-di>
+
+<head>
     <meta charset="utf-8">
 
     <title ng-bind="ctrl.getFullTitle()"></title>
 
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
     <link href="/application.css" rel="stylesheet">
     <script type="text/javascript" src="/application.js"></script>
     <base href="/">
-  </head>
+</head>
 
-  <body>
-    <nav class="menu">
-      <ul>
-        <li>
-          <a href="/perfis">Perfis</a>
-        </li>
-        <li>
-          <a href="/sobre">Sobre</a>
-        </li>
-      </ul>
-    </nav>
+<body>
+    <div class="main-menu narrow-menu">
+        <a href="/" class="logo"></a>
+        <nav class="menu">
+            <ul class="main-menu-nav">
+                <li>
+                    <a href="/perfis" class="standart-menu-item search-icon">
+                        <i class="material-icons">search</i>
+                        <span class="nav-text">Buscar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sobre" class="standart-menu-item search-icon active">
+                        <i class="material-icons">library_music</i>
+                        <span class="nav-text">Navegar</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="/sobre" class="standart-menu-item search-icon">
+                        <i class="material-icons">people_outline</i>
+                        <span class="nav-text">Artistas</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+    </div>
 
     <ng-view></ng-view>
-  </body>
+</body>
+
 </html>

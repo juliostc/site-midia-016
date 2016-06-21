@@ -31,7 +31,7 @@
     PageSettings
   ) {
     $rootScope.$on("$routeChangeSuccess", function () {
-      PageSettings.setTitle("Cinemídia");
+      PageSettings.setTitle("Midiafy");
       PageSettings.setSubtitle(null);
     });
   });

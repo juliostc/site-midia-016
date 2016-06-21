@@ -1,7 +1,7 @@
 (function(angular) {
   "use strict";
 
-  angular.module("cinemidia", [
+  angular.module("midiafy", [
     "ngRoute",
     "controllers.main",
     "controllers.profiles.index",
