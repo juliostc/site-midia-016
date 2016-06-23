@@ -1,29 +1,41 @@
-(function(angular) {
-  "use strict";
+(function (angular) {
+    "use strict";
 
-  angular.module("services.profile", [])
-    .service("profileService", function() {
-      var profiles = [
-        {
-          id: "lorde",
-          name: "Lorde",
-          description: "bem #top"
-        },
-        {
-          id: "taylor",
-          name: "Taylor Swift",
-          description: "nem tão #top mas já pegou o Gyllenhaal eu acho"
-        }
-      ];
+    angular.module("services.profile", [])
+        .service("profileService", function ($http) {
 
-      this.findAll = function() {
-        return profiles;
-      };
+            if (!profiles) profiles = [{
+                "teste": "teste"
+            }];
 
-      this.findById = function(id) {
-        return profiles.find(function(profile) {
-          return profile.id === id;
+            this.findAll = function () {
+                console.log(profiles);
+                return profiles;
+            };
+
+            this.findById = function (id) {
+                return profiles.find(function (profile) {
+                    return profile.id === id;
+                });
+            };
         });
-      };
-    });
 })(window.angular);
+
+var profiles;
+
+function listEntries(obj) {
+    //no HTML existe uma tag script que faz um get na planilha e chama uma função de callback (que no caso é essa)
+    profiles = [];
+    obj.feed.entry.forEach(function (profile) {
+        console.info(profile);
+        profiles.add({
+            id: profile["gsx$id"].$t
+            , nome: profile["gsx$nome"].$t
+            , bio: profile["gsx$bio"].$t
+            , nome_album: profile["gsx$nomealbum"].$t
+            , rede_social: profile["gsx$redesocial"].$t
+        });
+    });
+
+    //variavel global :/ porco mas n soube fazer de outro jeito
+}

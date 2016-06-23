@@ -1,9 +1,19 @@
-<div class="profiles index">
-  <ul>
-    <li ng-repeat="profile in ctrl.profiles">
-      <a ng-href="/perfis/{{ profile.id }}" ng-title="{{ profile.name }}">
-        {{ profile.name }}
-      </a>
-    </li>
-  </ul>
+<div class="section-divider">
+    <div>ARTISTAS</div>
+</div>
+
+<div class="card" ng-repeat="profile in ctrl.profiles">
+    <div class="img-wrapper">
+        <a ng-href="/perfis/{{profile.id}}" ng-title="{{profile.nome}}">
+            <div class="card-image" style="background-image: url(/assets/profiles/{{profile.id}}/CAPA.png)">
+            </div>
+        </a>
+    </div>
+    <div class="card-info">
+        <div class="info-wrapper">
+            <a class="card-title" ng-href="/perfis/{{profile.id}}" ng-title="{{profile.nome}}">
+                                    {{profile.nome}}
+                                </a>
+        </div>
+    </div>
 </div>
