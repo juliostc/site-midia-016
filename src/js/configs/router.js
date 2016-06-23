@@ -12,9 +12,10 @@
                 templateUrl: "navegar.html"
                 , controller: "NavegarController"
                 , controllerAs: "ctrl"
+                , reloadOnSearch: false
             })
             .when("/perfis/:id", {
-                templateUrl: "profiles/show.html"
+                templateUrl: "profiles/index.html"
                 , controller: "ProfilesShowController"
                 , controllerAs: "ctrl"
             })
