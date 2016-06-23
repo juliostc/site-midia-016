@@ -105,16 +105,28 @@
 }
 
 .profile-screen {
+    background-color: @background;
     &.active {
         border-left: 1px solid @cardBackground;
         box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
     }
 }
 
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
 .overlay {
     &.active {
         display: block;
+        animation: fadeIn @slideDuration ease;
     }
+    animation: fadeIn @slideDuration ease reverse;
     display: none;
     position: fixed;
     top: 0;
