@@ -12,9 +12,9 @@
             this.profiles = profileService.findAll();
 
             this.currentID = Object.keys($routeParams)[0];
-            this.currentProfile = profileService.findById(this.currentID);
+            $scope.selectedProfile = profileService.findById(this.currentID);
             this.isActive = function () {
-                return !!(this.currentProfile);
+                return !!($scope.selectedProfile);
             };
 
 

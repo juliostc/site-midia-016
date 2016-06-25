@@ -24,5 +24,76 @@
 
 <!-- AQUI COMEÇA A TELA DO PERFIL -->
 
-<div ng-class="(ctrl.isActive()?'active ':'')+'slider profile-screen'">
+<div ng-class="(ctrl.isActive()?'active ':'')+'slider artist-page'">
+    <header class="header header-artist">
+        <section class="container">
+            <div class="img-wrapper">
+                <div class="avatar" style="background-image: url(/assets/profiles/{{selectedProfile.id}}/AVATAR.PNG)"></div>
+                <i class="verified material-icons">verified_user</i>
+            </div>
+            <div class="artist-info">
+                <h1 class="artist-title">{{selectedProfile.nome}}</h1>
+                <div class="artist-controllers">
+                    <a class="button button-primary button-play">
+                        <i class="material-icons">play_arrow</i> <span>PLAY</span>
+                    </a>
+                    <a class="button">SEGUIR</a>
+                </div>
+            </div>
+        </section>
+    </header>
+    <div class="section-divider"></div>
+    <div class="container">
+        <div class="album-cover">
+            <div class="card-image" style="background-image: url(/assets/profiles/{{selectedProfile.id}}/CAPA.png)"></div>
+        </div>
+
+
+        <div class="album-details">
+            <div class="section-divider no-padding">
+                <h2>ÁLBUM</h2>
+            </div>
+            <div class="section-divider section-divider-borderless   album-title">
+                <h1 class="tunigo-label">{{selectedProfile.nome_album}}</h1>
+            </div>
+            <table class="tracklist-album">
+                <thead class="tl-header">
+                    <tr>
+                        <th class="tl-number">#</th>
+                        <th class="tl-save"></th>
+                        <th class="tl-name-with-featured
+">Música</th>
+                        <th class="tl-explicit"></th>
+                    </tr>
+                </thead>
+                <tbody class="tl-body">
+                    <tr tabindex="0" class="tl-row" data-contextmenu="">
+
+                        <td class="tl-cell tl-number">
+                            <span class="tl-number-wrap">1</span>
+                            <button type="button" data-button="play" data-log-click="play-button" class="button button-icon-only button-play"></button>
+                        </td>
+
+                        <td class="tl-cell tl-save">
+                            <button type="button" data-button="add" class="button button-icon-only button-add" data-tooltip="Salvar em Suas músicas" data-tooltip-add="Salvar em Suas músicas" data-tooltip-remove="Tirar de Suas músicas" data-log-click="add-button" aria-label="Salvar em Suas músicas"></button>
+                        </td>
+
+
+                        <td class="tl-cell tl-name-with-featured" colspan="2">
+
+                            <div class="tl-highlight ">
+                                Heartbeat Song
+
+                                <span class="tl-featuring">
+    
+  </span>
+                            </div>
+
+                        </td>
+
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
 </div>

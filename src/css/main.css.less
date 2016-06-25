@@ -18,10 +18,13 @@
     @cinza: #88898c;
     @cinzaClaro: #dfe0e6;
     @hoverColor: #fbfbfc;
+    @branco: #fff;
+    @verde: #648f00;
     @verdeLimao: #84bd00;
+    @azul: #009dbd;
     body {
         background-color: @bodyBackground;
-        font-family: 'Proxima Nova', Arial, sans-serif;
+        font-family: 'Proxima Nova Alt Light', Arial, sans-serif;
         cursor: default;
         font-size: 14px;
         line-height: 19px;
@@ -47,6 +50,14 @@
         }
     }
     
+    h1 {
+        font-size: 48px;
+        line-height: 56px;
+        font-weight: 100;
+        color: @cinzaClaro;
+        cursor: default;
+    }
+    
     ul,
     ol {
         margin-top: 0;
@@ -58,6 +69,17 @@
         height: 100%;
         border: 0;
         background-color: @bodyBackground;
+    }
+    
+    table {
+        max-width: 100%;
+        background-color: transparent;
+        border-spacing: 0;
+    }
+    
+    th {
+        font-weight: 400;
+        text-align: left;
     }
     
     .main-menu {
@@ -228,7 +250,7 @@
     }
     
     .section-divider {
-        border-bottom: 1px solid #222326;
+        border-bottom: 1px solid @cardBackground;
         margin: 0 0 16px;
         padding: 20px 0 4px;
         position: relative;
@@ -241,13 +263,13 @@
             text-transform: uppercase;
             letter-spacing: 1.1px;
             font-size: 14px;
-            color: #88898c;
+            color: @cinza;
             line-height: 24px;
             margin: 0;
             font-weight: 400;
-            //          &:first-child {
-            //            float: left;
-            //        }
+            //&:first-child {
+            //    float: left;
+            //}
         }
         .tunigo-label {
             //        color: #FFF;
@@ -259,6 +281,17 @@
             text-transform: none;
             min-height: 24px;
             font-family: Proxima Nova Alt Light;
+        }
+        &.brighter {
+            border-bottom-color: @cinza;
+        }
+        &.section-divider-borderless {
+            border-bottom: 0;
+            margin-bottom: 8px;
+            padding-bottom: 0;
+        }
+        &.no-padding {
+            padding: 0 0 0 0;
         }
     }
     
