@@ -1,0 +1,13 @@
+<div class="profiles show">
+  <img ng-src="{{ ctrl.getImagePath(ctrl.profile.id) }}" ng-alt="{{ ctrl.profile.name }}" />
+
+  <p>
+    <strong>Nome: </strong>
+    <span ng-bind="ctrl.profile.name"></span>
+  </p>
+
+  <p>
+    <strong>Sobre: </strong>
+    <span ng-bind="ctrl.profile.description"></span>
+  </p>
+</div>
