@@ -11,7 +11,8 @@ const gulp = require("gulp"),
       ngAnnotate = require("gulp-ng-annotate"),
       image = require("gulp-image"),
       include = require("gulp-include"),
-      rename = require("gulp-rename");
+      rename = require("gulp-rename"),
+      ghPages = require("gulp-gh-pages");
 
 if (!process.env.NODE_ENV) { environments.current(environments.development); }
 
@@ -55,6 +56,13 @@ gulp.task("clean", () => del.sync(publicFolder));
 gulp.task("default", ["css", "js", "views", "assets"]);
 
 gulp.task("build", ["clean", "default"]);
+
+gulp.task("gh-deploy", ["build"], () => {
+  return gulp.src("./public/**/*")
+    .pipe(ghPages({
+      force: true
+    }));
+});
 
 if (environments.development()) {
   const watch = require("gulp-watch"),

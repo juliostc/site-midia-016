@@ -5,6 +5,7 @@
   "scripts": {
     "build": "./node_modules/.bin/gulp build",
     "watch": "./node_modules/.bin/gulp watch",
+    "gh-deploy": "env NODE_ENV=production ./node_modules/.bin/gulp gh-deploy",
     "start": "node app.js"
   },
   "repository": {
@@ -26,6 +27,7 @@
     "gulp-batch": "^1.0.5",
     "gulp-cssnano": "^2.1.2",
     "gulp-environments": "^0.1.1",
+    "gulp-gh-pages": "^0.5.4",
     "gulp-image": "^2.0.1",
     "gulp-include": "^2.2.1",
     "gulp-less": "^3.1.0",

@@ -10,3 +10,10 @@ Para gerar uma versão para produção(com arquivos minificados) execute:
 ```
 env NODE_ENV=production npm run build
 ```
+
+## Github Page
+Execute
+```
+npm run gh-deploy
+```
+O deploy pode ser conferido em https://juliostc.github.io/site-midia-016
