@@ -26,6 +26,9 @@
             })
             .when("/sobre", {
                 templateUrl: "about.html"
+            })
+            .otherwise({
+                redirectTo: "/sobre"
             });
 
         $locationProvider.html5Mode(true);
