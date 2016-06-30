@@ -30,8 +30,6 @@
             .otherwise({
                 redirectTo: "/sobre"
             });
-
-        $locationProvider.html5Mode(true);
     });
 
     // resets the title and subtitle when the route changes

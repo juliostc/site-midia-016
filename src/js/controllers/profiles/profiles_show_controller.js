@@ -14,7 +14,7 @@
       PageSettings.setSubtitle(this.profile.name);
 
       this.getImagePath = function(profileId) {
-        return "/assets/profiles/" + profileId + ".jpg";
+        return "assets/profiles/" + profileId + ".jpg";
       };
     });
 })(window.angular);
