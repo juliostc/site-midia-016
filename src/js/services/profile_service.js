@@ -20,13 +20,13 @@
         });
 })(window.angular);
 
-var profiles;
+var profiles = [];
 
 function listEntries(obj) {
     //no HTML existe uma tag script que faz um get na planilha e chama uma função de callback (que no caso é essa)
     profiles = [];
     obj.feed.entry.forEach(function (profile) {
-        profiles.add({
+        profiles.push({
             id: profile["gsx$id"].$t
             , nome: profile["gsx$nome"].$t
             , bio: profile["gsx$bio"].$t
