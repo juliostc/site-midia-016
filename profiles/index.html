@@ -50,9 +50,10 @@
 
 
         <div class="album-details">
-            <div class="section-divider no-padding">
+            <div class="section-divider no-padding pre-album-title">
                 <h2>ÁLBUM</h2>
             </div>
+            <span class="h-label">2016</span>
             <div class="section-divider section-divider-borderless   album-title">
                 <h1 class="tunigo-label">{{selectedProfile.nome_album}}</h1>
             </div>
@@ -60,36 +61,39 @@
                 <thead class="tl-header">
                     <tr>
                         <th class="tl-number">#</th>
-                        <th class="tl-save"></th>
+                        <!--<th class="tl-save"></th>-->
                         <th class="tl-name-with-featured
 ">Música</th>
                         <th class="tl-explicit"></th>
                     </tr>
                 </thead>
                 <tbody class="tl-body">
+                    <!-- CRIAR UM OBJETO NO JS E ITERAR ELE PRA AUTOMATIZAR ISSO AQUI E FICAR MENOS PORCO -->
                     <tr tabindex="0" class="tl-row" data-contextmenu="">
-
                         <td class="tl-cell tl-number">
-                            <span class="tl-number-wrap">1</span>
+                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
+                                <span class="tl-number-wrap">1</span>
+                            </a>
                         </td>
-
-                        <td class="tl-cell tl-save">
-                            <button type="button" data-button="add" class="button button-icon-only button-add" data-tooltip="Salvar em Suas músicas" data-tooltip-add="Salvar em Suas músicas" data-tooltip-remove="Tirar de Suas músicas" data-log-click="add-button" aria-label="Salvar em Suas músicas"></button>
-                        </td>
-
-
                         <td class="tl-cell tl-name-with-featured" colspan="2">
-
-                            <div class="tl-highlight ">
-                                Heartbeat Song
-
-                                <span class="tl-featuring">
-
-  </span>
-                            </div>
-
+                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
+                                <div class="tl-highlight ">
+                                    Projeto de Pesquisa<span class="tl-featuring"></span></div>
+                            </a>
                         </td>
-
+                    </tr>
+                    <tr tabindex="1" class="tl-row" data-contextmenu="">
+                        <td class="tl-cell tl-number">
+                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
+                                <span class="tl-number-wrap">2</span>
+                            </a>
+                        </td>
+                        <td class="tl-cell tl-name-with-featured" colspan="2">
+                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
+                                <div class="tl-highlight ">
+                                    Projeto de Pesquisa<span class="tl-featuring"></span></div>
+                            </a>
+                        </td>
                     </tr>
                 </tbody>
             </table>
