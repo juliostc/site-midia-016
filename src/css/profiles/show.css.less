@@ -96,6 +96,8 @@
         .translate3d(100%, 0, 0)
     }
 }
+
+@album-details-width: 32em;
 .artist-page {
     background-color: @bodyBackground;
     overflow-y: auto;
@@ -122,7 +124,7 @@
     .album-details {
         position: relative;
         margin-left: 25px;
-        width: 50%; //PARA CABER LADO A LADO
+        width: @album-details-width;
     }
 }
 @keyframes fadeIn {
@@ -160,6 +162,7 @@
         height: @avatar-size + 35px;
         padding: 35px 35px 0 35px;
         position: relative;
+        margin: 0px;
     }
     .img-wrapper {
         width: @avatar-size;
@@ -264,11 +267,17 @@
 }
 .album-title > .tunigo-label {
     font-size: 40px;
+    &.album_title{
+        font-size: 48px;
+    }
 }
+ 
 .album-cover {
     position: relative;
-    width: 400px;
-    height: 400px;
+    width: calc(~'90% - @{album-details-width}');
+    padding-bottom: calc(~'90% - @{album-details-width}'); //TESTE n sei pq isso funciona
+    height: 0;
+    
 }
 .tracklist-album {
     color: @cinza;
@@ -287,8 +296,6 @@
 .tl-cell {
     border-top: 1px solid #222326;
     position: relative;
-}
-.tl-cell {
     padding: 12px 12px 0 12px;
     //cursor: pointer;
 }
@@ -310,6 +317,7 @@
 }
 .tl-highlight {
     color: #dfe0e6;
+    
 }
 .h-label {
     color: #88898c;
@@ -345,6 +353,16 @@ table tr td a {
         border: none;
     }
 }
+.tb-tracks{
+    font-size: 24px;
+    tr td{
+        padding: 20px 20px 0 12px;
+        &.tl-cell{
+            height: 60px;
+        }
+    }
+}
+
 //gamb
 .section-divider.pre-album-title {
     margin-bottom: 8px;
