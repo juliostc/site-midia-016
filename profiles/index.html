@@ -5,98 +5,129 @@
 
 <div class="card" ng-repeat="profile in ctrl.profiles">
     <div class="img-wrapper">
-        <a ng-href="#perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
+        <a ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
             <div class="card-image" style="background-image: url(assets/profiles/{{profile.id}}/CAPA.png)">
             </div>
         </a>
     </div>
     <div class="card-info">
         <div class="info-wrapper">
-            <a class="card-title" ng-href="#perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
+            <a class="card-title" ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
                                     {{profile.nome}}
                                 </a>
         </div>
     </div>
 </div>
-<a href="#perfis" class="cursor-default">
+<a href="#!/perfis" class="cursor-default">
     <div ng-class="{active: ctrl.isActive()}" class="overlay"></div>
 </a>
 
 <!-- AQUI COMEÇA A TELA DO PERFIL -->
 
 <div ng-class="(ctrl.isActive()?'active ':'')+'slider artist-page'">
-    <header class="header header-artist">
-        <section class="container">
-            <div class="img-wrapper">
-                <div class="avatar" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)"></div>
-                <i class="verified material-icons">verified_user</i>
+    <div class="artist-container">
+        <header class="header header-artist">
+            <div class="header-background" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)">
+                <section>
+
+                    <div class="container">
+                        <div class="img-wrapper">
+                            <div class="avatar" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)"></div>
+                            <i class="verified material-icons">verified_user</i>
+                        </div>
+                        <div class="artist-info">
+                            <span class="h-label">Artista</span>
+                            <h1 class="artist-title">{{selectedProfile.nome}}</h1>
+                            <div class="artist-controllers">
+                                <a class="button button-primary button-play">
+                                    <i class="material-icons">play_arrow</i> <span>PLAY</span>
+                                </a>
+                                <a class="button">SEGUIR</a>
+                            </div>
+                        </div>
+                    </div>
+
+                </section>
+
+                <ul class="nav navbar-nav" data-navbar="navbar" data-navbar-history-position="1" data-navbar-active-id="overview" data-log-context="navbar">
+
+                    <li class="active" data-navbar-item-id="overview">
+
+                        <a data-log-click="overview">Visão geral</a>
+
+                    </li>
+
+                    <li class="" data-navbar-item-id="related">
+
+                        <a data-log-click="related">Artistas relacionados</a>
+
+                    </li>
+
+                    <li class="" data-navbar-item-id="biography">
+
+                        <a data-log-click="biography">Biografia</a>
+
+                    </li>
+
+
+                </ul>
             </div>
-            <div class="artist-info">
-                <h1 class="artist-title">{{selectedProfile.nome}}</h1>
-                <div class="artist-controllers">
-                    <a class="button button-primary button-play">
-                        <i class="material-icons">play_arrow</i> <span>PLAY</span>
-                    </a>
-                    <a class="button">SEGUIR</a>
+
+        </header>
+
+        <div class="container">
+
+
+            <div class="album-details">
+                <div class="section-divider no-padding pre-album-title">
+                    <h2>ÁLBUM</h2>
                 </div>
+                <span class="h-label">2016</span>
+                <div class="section-divider section-divider-borderless   album-title">
+                    <h1 class="tunigo-label album_title">{{selectedProfile.nome_album}}</h1>
+                </div>
+                <table class="tracklist-album">
+                    <thead class="tl-header">
+                        <tr>
+                            <th class="tl-number">#</th>
+                            <!--<th class="tl-save"></th>-->
+                            <th class="tl-name-with-featured
+">Faixa </th>
+                            <th class="tl-explicit"></th>
+                        </tr>
+                    </thead>
+                    <tbody class="tl-body tb-tracks">
+                        <tr ng-repeat="track in ctrl.tracks" tabindex="track.index" class="tl-row clickable" data-contextmenu="">
+
+                            <td class="tl-cell tl-number">
+                                <a ng-if="!track.exception" ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf" target="_blank" class="table-link"></a>
+
+                                <span class="tl-number-wrap">{{track.index + 1}}</span>
+
+                            </td>
+                            <td class="tl-cell tl-name-with-featured" colspan="2">
+                                <a ng-if="!track.exception" ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf" target="_blank" class="table-link"></a>
+
+                                <div class="tl-highlight">
+                                    {{track.title}}<span class="tl-featuring"></span></div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
-        </section>
-    </header>
-    <div class="section-divider"></div>
-    <div class="container">
-        <div class="album-cover">
-            <div class="card-image" style="background-image: url(assets/profiles/{{selectedProfile.id}}/CAPA.png)"></div>
-        </div>
+
+            <div class="album-cover">
+                <div class="card-image" style="background-image: url(assets/profiles/{{selectedProfile.id}}/CAPA.png)"></div>
+            </div>
 
 
-        <div class="album-details">
-            <div class="section-divider no-padding pre-album-title">
-                <h2>ÁLBUM</h2>
+            <div class="bio">
+                <div class="section-divider no-padding pre-album-title">
+                    <h2>Biografia</h2>
+                </div>
+                <p>{{selectedProfile.bio}}</p>
             </div>
-            <span class="h-label">2016</span>
-            <div class="section-divider section-divider-borderless   album-title">
-                <h1 class="tunigo-label">{{selectedProfile.nome_album}}</h1>
-            </div>
-            <table class="tracklist-album">
-                <thead class="tl-header">
-                    <tr>
-                        <th class="tl-number">#</th>
-                        <!--<th class="tl-save"></th>-->
-                        <th class="tl-name-with-featured
-">Música</th>
-                        <th class="tl-explicit"></th>
-                    </tr>
-                </thead>
-                <tbody class="tl-body">
-                    <!-- CRIAR UM OBJETO NO JS E ITERAR ELE PRA AUTOMATIZAR ISSO AQUI E FICAR MENOS PORCO -->
-                    <tr tabindex="0" class="tl-row" data-contextmenu="">
-                        <td class="tl-cell tl-number">
-                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
-                                <span class="tl-number-wrap">1</span>
-                            </a>
-                        </td>
-                        <td class="tl-cell tl-name-with-featured" colspan="2">
-                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
-                                <div class="tl-highlight ">
-                                    Projeto de Pesquisa<span class="tl-featuring"></span></div>
-                            </a>
-                        </td>
-                    </tr>
-                    <tr tabindex="1" class="tl-row" data-contextmenu="">
-                        <td class="tl-cell tl-number">
-                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
-                                <span class="tl-number-wrap">2</span>
-                            </a>
-                        </td>
-                        <td class="tl-cell tl-name-with-featured" colspan="2">
-                            <a ng-href="assets/profiles/{{selectedProfile.id}}/PROJETO_DE_PESQUISA.pdf" target="_blank">
-                                <div class="tl-highlight ">
-                                    Projeto de Pesquisa<span class="tl-featuring"></span></div>
-                            </a>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
         </div>
     </div>
 </div>
