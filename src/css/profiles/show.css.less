@@ -96,8 +96,7 @@
         .translate3d(100%, 0, 0)
     }
 }
-
-@album-details-width: 32em;
+@album-details-width: 55%;
 .artist-page {
     background-color: @bodyBackground;
     overflow-y: auto;
@@ -111,19 +110,29 @@
         h1 {
             font-family: "Proxima Nova Alt Bold";
         }
-        padding-bottom: 10px;
-        padding-top: 10px;
+        padding-bottom: 0;
+        padding-top: 0;
     }
     .container {
-        width: 100%;
+        width: 80%;
+        max-width: 100%;
         position: absolute;
         > div {
             float: left;
+        }
+        .bio {
+            padding-top: 10px;
+            margin-left: 25px;
+            p {
+                font-size: 20px;
+                line-height: normal;
+            }
         }
     }
     .album-details {
         position: relative;
         margin-left: 25px;
+        margin-top: 25px;
         width: @album-details-width;
     }
 }
@@ -155,14 +164,32 @@
     cursor: default;
 }
 @avatar-size: 128px;
+.header {}
 .header-artist {
     background-color: @background;
-    .container {
+    .header-background {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        height: 100%;
+        //position: absolute;
+        width: 100%;
+    }
+    section {
         // min-width: 610px;
-        height: @avatar-size + 35px;
+        //height: @avatar-size + 35px;
+        height: 275px;
+    }
+    .nav {
+        height: 45px;
+    }
+    .container {
+        width: 100%;
+        height: 100%;
         padding: 35px 35px 0 35px;
         position: relative;
         margin: 0px;
+        background-color: rgba(0, 0, 0, 0.45);
     }
     .img-wrapper {
         width: @avatar-size;
@@ -223,6 +250,9 @@
     + .section-divider {
         background-color: @background;
     }
+    .navbar-nav {
+        padding: 0 20px;
+    }
 }
 .button {
     background: rgba(0, 0, 0, .2);
@@ -267,17 +297,20 @@
 }
 .album-title > .tunigo-label {
     font-size: 40px;
-    &.album_title{
+    &.album_title {
         font-size: 48px;
+        line-height: normal;
     }
 }
- 
 .album-cover {
+    margin-left: 20px;
+    margin-top: 25px;
     position: relative;
-    width: calc(~'90% - @{album-details-width}');
-    padding-bottom: calc(~'90% - @{album-details-width}'); //TESTE n sei pq isso funciona
+    //width: calc(~'80% - @{album-details-width}');
+    //padding-bottom: calc(~'80% - @{album-details-width}'); //OITENTA POR CENTO PQ O CONTAINTER TA COM WIDTH 80%
+    width: 40%;
+    padding-bottom: 40%;
     height: 0;
-    
 }
 .tracklist-album {
     color: @cinza;
@@ -317,7 +350,6 @@
 }
 .tl-highlight {
     color: #dfe0e6;
-    
 }
 .h-label {
     color: #88898c;
@@ -327,7 +359,7 @@
 }
 .tl-cell,
 .tl-cell>div {
-    overflow: hidden;
+    //overflow: hidden; IDK!!!!
     text-overflow: ellipsis;
     white-space: nowrap;
 }
@@ -336,7 +368,7 @@
 }
 .tl-cell {
     background: #121314;
-    height: 40px;
+    height: 50px;
 }
 .tl-row:hover .tl-highlight {
     color: #fbfbfc;
@@ -353,17 +385,81 @@ table tr td a {
         border: none;
     }
 }
-.tb-tracks{
+.tb-tracks {
     font-size: 24px;
-    tr td{
-        padding: 20px 20px 0 12px;
-        &.tl-cell{
+    tr td div {
+        padding: 12px 12px 0 0;
+        &.tl-cell {
             height: 60px;
         }
     }
 }
-
+.table-link {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 0 0 0 0;
+    margin: 0 0 0 0;
+}
+.clickable {
+    cursor: pointer;
+}
+.artist-container {
+    width: 80%;
+}
 //gamb
 .section-divider.pre-album-title {
     margin-bottom: 8px;
+}
+.tl-name-with-featured {
+    padding-left: 22px;
+}
+.nav {
+    margin-left: 0;
+    margin-bottom: 0;
+    padding-left: 0;
+    list-style: none;
+    border-bottom: 1px solid #222326;
+    background-color: rgba(0, 0, 0, 0.7);
+}
+.nav>li:first-child,
+.nav>li:first-child .navbar-text {
+    margin-left: 0;
+}
+.navbar-nav>li {
+    float: left;
+}
+.nav>li {
+    position: relative;
+    display: block;
+    margin: 0 15px;
+    float: left;
+}
+.nav>li.active>a {
+    color: #dfe0e6;
+}
+.navbar-nav>li>a {
+    line-height: 44px;
+}
+.navbar-nav>li>a {
+    line-height: 19px;
+}
+.nav>li>a {
+    position: relative;
+    display: block;
+    line-height: 44px;
+    color: #88898c;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    font-size: 14px;
+    transition: color .2s;
+    border-bottom: none;
+}
+a {
+    color: #dfe0e6;
+    text-decoration: none;
+    cursor: pointer;
+    border-bottom: 1px solid transparent;
 }
