@@ -5,6 +5,7 @@
 
 <div class="card" ng-repeat="profile in ctrl.profiles">
     <div class="img-wrapper">
+        <!--<a ng-href="{{getProfileUrl(profile.id)+" "}}" ng-title="{{profile.nome}}"> DEU ERRADO SEILA PQ-->
         <a ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
             <div class="card-image" style="background-image: url(assets/profiles/{{profile.id}}/CAPA.png)">
             </div>
@@ -39,33 +40,28 @@
                             <span class="h-label">Artista</span>
                             <h1 class="artist-title">{{selectedProfile.nome}}</h1>
                             <div class="artist-controllers">
-                                <a class="button button-primary button-play">
+                                <a class="button button-primary button-play" ng-click="showMedia()">
                                     <i class="material-icons">play_arrow</i> <span>PLAY</span>
                                 </a>
-                                <a class="button">SEGUIR</a>
+                                <a class="button" ng-show="selectedProfile.rede_social" ng-href="{{selectedProfile.rede_social}}" target="_blank">SEGUIR</a>
                             </div>
                         </div>
                     </div>
 
                 </section>
 
-                <ul class="nav navbar-nav" data-navbar="navbar" data-navbar-history-position="1" data-navbar-active-id="overview" data-log-context="navbar">
+                <ul class="nav navbar-nav " data-navbar="navbar " data-navbar-history-position="1 " data-navbar-active-id="overview " data-log-context="navbar ">
 
-                    <li class="active" data-navbar-item-id="overview">
+                    <li ng-class="{active: !selectedProfile.tab || selectedProfile.tab == 'main'}" data-navbar-item-id="overview ">
 
-                        <a data-log-click="overview">Visão geral</a>
-
-                    </li>
-
-                    <li class="" data-navbar-item-id="related">
-
-                        <a data-log-click="related">Artistas relacionados</a>
+                        <a ng-click="hideMedia()">Visão geral</a>
 
                     </li>
 
-                    <li class="" data-navbar-item-id="biography">
+                    <li ng-class="{active: selectedProfile.tab == 'media'}" data-navbar-item-id="related " ng-hide="{{selectedProfile.tipo_produto == 'NAO'}}">
 
-                        <a data-log-click="biography">Biografia</a>
+                        <a href ng-click="showMedia()">Produto Midiático</a>
+
 
                     </li>
 
@@ -75,41 +71,46 @@
 
         </header>
 
-        <div class="container">
+        <div class="container main-tab" ng-show="!selectedProfile.tab || (selectedProfile.tab == 'main')">
 
 
-            <div class="album-details">
-                <div class="section-divider no-padding pre-album-title">
+            <div class="album-details ">
+                <div class="section-divider no-padding pre-album-title ">
                     <h2>ÁLBUM</h2>
                 </div>
-                <span class="h-label">2016</span>
-                <div class="section-divider section-divider-borderless   album-title">
-                    <h1 class="tunigo-label album_title">{{selectedProfile.nome_album}}</h1>
+                <span class="h-label ">2016</span>
+                <div class="section-divider section-divider-borderless album-title ">
+                    <h1 class="tunigo-label album_title ">{{selectedProfile.nome_album}}</h1>
                 </div>
-                <table class="tracklist-album">
-                    <thead class="tl-header">
+                <table class="tracklist-album ">
+                    <thead class="tl-header ">
                         <tr>
-                            <th class="tl-number">#</th>
-                            <!--<th class="tl-save"></th>-->
-                            <th class="tl-name-with-featured
-">Faixa </th>
-                            <th class="tl-explicit"></th>
+                            <th class="tl-number ">#</th>
+                            <!--<th class="tl-save "></th>-->
+                            <th class="tl-name-with-featured ">Faixa </th>
+                            <th class="tl-explicit "></th>
                         </tr>
                     </thead>
-                    <tbody class="tl-body tb-tracks">
-                        <tr ng-repeat="track in ctrl.tracks" tabindex="track.index" class="tl-row clickable" data-contextmenu="">
+                    <tbody class="tl-body tb-tracks ">
+                        <tr ng-repeat="track in ctrl.tracks " tabindex="track.index " class="tl-row clickable " data-contextmenu=" ">
 
-                            <td class="tl-cell tl-number">
-                                <a ng-if="!track.exception" ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf" target="_blank" class="table-link"></a>
+                            <td class="tl-cell tl-number ">
+                                <a ng-if="!track.exception " ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf " target="_blank " class="table-link "></a>
+                                <a ng-if="track.exception " href ng-click="showMedia()" class="table-link "></a>
 
-                                <span class="tl-number-wrap">{{track.index + 1}}</span>
+
+
+                                <span class="tl-number-wrap ">{{track.index + 1}}</span>
 
                             </td>
-                            <td class="tl-cell tl-name-with-featured" colspan="2">
-                                <a ng-if="!track.exception" ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf" target="_blank" class="table-link"></a>
+                            <td class="tl-cell tl-name-with-featured " colspan="2 ">
+                                <a ng-if="!track.exception " ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf " target="_blank " class="table-link "></a>
+                                <a ng-if="track.exception " href ng-click="showMedia()" class="table-link "></a>
 
-                                <div class="tl-highlight">
-                                    {{track.title}}<span class="tl-featuring"></span></div>
+
+
+                                <div class="tl-highlight ">
+                                    {{track.title}}<span class="tl-featuring "></span></div>
 
                             </td>
                         </tr>
@@ -117,17 +118,36 @@
                 </table>
             </div>
 
-            <div class="album-cover">
-                <div class="card-image" style="background-image: url(assets/profiles/{{selectedProfile.id}}/CAPA.png)"></div>
+            <div class="album-cover ">
+                <div class="card-image " style="background-image: url(assets/profiles/{{selectedProfile.id}}/CAPA.png) "></div>
             </div>
 
 
-            <div class="bio">
-                <div class="section-divider no-padding pre-album-title">
+            <div class="bio ">
+                <div class="section-divider no-padding pre-album-title ">
                     <h2>Biografia</h2>
                 </div>
                 <p>{{selectedProfile.bio}}</p>
+
+
             </div>
+
+            <div class="arrows">
+                <a class="icon left" ng-href="#!/perfis/?{{previousAndNext[0].id}}" ng-show="previousAndNext[0]">
+                    <i class="material-icons">skip_previous</i>
+                    <span class="h-label">Anterior</span>
+                </a>
+                <a class="icon right" ng-href="#!/perfis/?{{previousAndNext[1].id}}" ng-show="previousAndNext[1]">
+                    <i class="material-icons">skip_next</i>
+                    <span class="h-label">Próximo</span>
+                </a>
+            </div>
+
         </div>
+
+        <div class="container media-tab" ng-show="selectedProfile.tab== 'media'">
+            <iframe ng-src="{{iframeUrl}}" frameborder="0" allowfullscreen></iframe>
+        </div>
+
     </div>
 </div>

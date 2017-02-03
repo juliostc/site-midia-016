@@ -17,6 +17,23 @@
                     return profile.id === id;
                 });
             };
+
+            this.previousAndNext = function (profile) {
+                var index = profiles.indexOf(profile);
+                var result = [];
+
+                if (index > 0) {
+                    result[0] = profiles[index - 1];
+                }
+                if (index < profiles.length) {
+                    result[1] = profiles[index + 1];
+                }
+                return result;
+            };
+
+            this.getProfileUrl = function (id) {
+                return "#!/perfis/?{{" + id + "}}";
+            };
         });
 })(window.angular);
 
@@ -27,11 +44,14 @@ function listEntries(obj) {
     profiles = [];
     obj.feed.entry.forEach(function (profile) {
         profiles.push({
-            id: profile["gsx$id"].$t
-            , nome: profile["gsx$nome"].$t
-            , bio: profile["gsx$bio"].$t
-            , nome_album: profile["gsx$nomealbum"].$t
-            , rede_social: profile["gsx$redesocial"].$t
+            id: profile["gsx$id"].$t,
+            nome: profile["gsx$nome"].$t,
+            bio: profile["gsx$bio"].$t,
+            nome_album: profile["gsx$nomealbum"].$t,
+            rede_social: profile["gsx$redesocial"].$t,
+            link_produto: profile["gsx$linkproduto"].$t,
+            tipo_produto: profile["gsx$tipoproduto"].$t
+
         });
     });
 

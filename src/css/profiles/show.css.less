@@ -96,7 +96,7 @@
         .translate3d(100%, 0, 0)
     }
 }
-@album-details-width: 55%;
+@album-details-width: 50%;
 .artist-page {
     background-color: @bodyBackground;
     overflow-y: auto;
@@ -128,12 +128,59 @@
                 line-height: normal;
             }
         }
+        .arrows {
+            position: relative;
+            width: 100%;
+            padding-top: 20px;
+            padding-bottom: 20px;
+            .h-label {
+                text-align: center;
+                display: block;
+            }
+        }
+        &.media-tab {
+            height: calc(~'100% - (320px + 40px)'); //320 de header e 40 das bordas GAMBIARRA
+        }
+        iframe {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
     }
     .album-details {
         position: relative;
         margin-left: 25px;
         margin-top: 25px;
         width: @album-details-width;
+    }
+    a.icon {
+        height: 63px;
+        border: none;
+        color: @cinza; //cinza não selecionado
+        text-decoration: none;
+        //position: relative;
+        font-weight: 400;
+        width: 90px;
+        //display: block;
+        text-align: center;
+        i {
+            text-align: center;
+            //width: 100%;
+            //font-size: 30px; //24
+            font-size: 42px; //24
+        }
+        &:hover {
+            color: @hoverColor;
+        }
+        &.left {
+            position: absolute;
+            left: 20px;
+            padding-bottom: 20px;
+        }
+        &.right {
+            position: absolute;
+            right: 20px;
+            padding-bottom: 20px;
+        }
     }
 }
 @keyframes fadeIn {
@@ -186,10 +233,11 @@
     .container {
         width: 100%;
         height: 100%;
-        padding: 35px 35px 0 35px;
+        padding: 16px 20px 0 20px;
+        padding-top: 129px;
         position: relative;
         margin: 0px;
-        background-color: rgba(0, 0, 0, 0.45);
+        background-color: rgba(0, 0, 0, 0.50);
     }
     .img-wrapper {
         width: @avatar-size;
@@ -225,11 +273,10 @@
         position: absolute;
     }
     .artist-info {
-        padding-top: 30px;
-        padding-left: 35px;
+        padding-top: 16px;
+        padding-left: 146px;
         padding-right: 100px;
-        //margin-left: -130px;
-        //width: 100%;
+        margin-left: -130px;
         float: left;
         .button {
             margin-right: 8px;
@@ -422,7 +469,7 @@ table tr td a {
     padding-left: 0;
     list-style: none;
     border-bottom: 1px solid #222326;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.8);
 }
 .nav>li:first-child,
 .nav>li:first-child .navbar-text {
@@ -456,6 +503,19 @@ table tr td a {
     font-size: 14px;
     transition: color .2s;
     border-bottom: none;
+}
+.nav>li.active>a:after {
+    background-color: #84bd00;
+}
+.nav>li>a:after {
+    content: ' ';
+    background-color: transparent;
+    bottom: 0;
+    height: 2px;
+    left: 0;
+    position: absolute;
+    width: 100%;
+    transition: background-color .5s;
 }
 a {
     color: #dfe0e6;
