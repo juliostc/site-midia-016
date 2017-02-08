@@ -24,12 +24,12 @@
                 },
                 {
                     title: "Artigo Científico",
-                    url: "ARTIGO_CIENTIFICO",
+                    url: "ARTIGO",
                     index: 1
                 },
                 {
                     title: "Projeto de Desenvolvimento",
-                    url: "ARTIGO_CIENTIFICO",
+                    url: "PROJETO_DE_DESENVOLVIMENTO",
                     index: 2
                 },
                 {

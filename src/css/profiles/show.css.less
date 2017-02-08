@@ -1,525 +1,792 @@
-//tudo referente aos perfis
-.media.genre .genreImage {
-    padding-bottom: 100%;
-    background-size: contain;
-    background-repeat: no-repeat;
-}
-.card {
-    overflow: hidden;
-    font-size: 14px;
-    float: none;
-    display: inline-block;
-    vertical-align: top;
-    white-space: normal;
-    margin-bottom: 15px;
-    position: relative;
-    width: 16.66666667%;
-    padding-left: 10px;
-    padding-right: 10px;
-    min-height: 1px;
-}
-.img-wrapper {
-    height: 100%;
-    overflow: hidden;
-    padding-bottom: 100%;
-    position: relative;
-}
-.card-image {
-    background-repeat: no-repeat;
-    background-position: center;
-    background-size: cover;
-    height: 100%;
-    position: absolute;
-    width: 100%;
-}
-.card-info {
-    background-color: @cardBackground;
-    padding: 10px 8px 10px;
-    //height: 63px;
-    .info-wrapper {
-        height: 100%;
-        position: relative;
-        .card-title {
-            //border-bottom: none;
-            line-height: 19px;
-            max-height: 38px;
-            overflow: hidden;
-            position: relative;
-            white-space: normal;
-            .card-title-border {
-                border-bottom: 1px solid transparent;
-            }
-        }
-    }
-}
-.profiles.show {
-    width: 80%;
-    .slider();
-    padding-left: 4px;
-    img {
-        height: 150px
-    }
-}
-@slideDuration: .35s;
-.slider {
-    height: 100%;
-    width: 100%;
-    -webkit-backface-visibility: hidden;
-    -webkit-transform-style: preserve-3d;
-    //.translate3d(100%, 0, 0);
-    .transition(.35s ease);
-    animation-name: slide;
-    animation-duration: @slideDuration;
-    animation-direction: normal;
-    animation-timing-function: ease-in-out;
-    animation-fill-mode: forwards;
-    background-color: transparent;
-    &.active {
-        width: 75%;
-        //.translate3d(0%, 0, 0);
-        animation-name: slide;
-        animation-duration: @slideDuration;
-        animation-direction: reverse;
-        animation-timing-function: ease-in-out;
-        animation-fill-mode: forwards;
-    }
-    display: block;
-    position: fixed;
-    right: 0;
-    top: 0;
-}
-@keyframes slide {
-    from {
-        .translate3d(0%, 0, 0)
-    }
-    to {
-        .translate3d(100%, 0, 0)
-    }
-}
-@album-details-width: 50%;
-.artist-page {
-    background-color: @bodyBackground;
-    overflow-y: auto;
-    overflow-x: hidden;
-    &.active {
-        border-left: 1px solid @cardBackground;
-        box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
-    }
-    z-index: 100;
-    .section-divider.album-title {
-        h1 {
-            font-family: "Proxima Nova Alt Bold";
-        }
-        padding-bottom: 0;
-        padding-top: 0;
-    }
-    .container {
-        width: 80%;
-        max-width: 100%;
-        position: absolute;
-        > div {
-            float: left;
-        }
-        .bio {
-            padding-top: 10px;
-            margin-left: 25px;
-            p {
-                font-size: 20px;
-                line-height: normal;
-            }
-        }
-        .arrows {
-            position: relative;
-            width: 100%;
-            padding-top: 20px;
-            padding-bottom: 20px;
-            .h-label {
-                text-align: center;
-                display: block;
-            }
-        }
-        &.media-tab {
-            height: calc(~'100% - (320px + 40px)'); //320 de header e 40 das bordas GAMBIARRA
-        }
-        iframe {
-            margin-top: 20px;
-            margin-bottom: 20px;
-        }
-    }
-    .album-details {
-        position: relative;
-        margin-left: 25px;
-        margin-top: 25px;
-        width: @album-details-width;
-    }
-    a.icon {
-        height: 63px;
-        border: none;
-        color: @cinza; //cinza não selecionado
-        text-decoration: none;
-        //position: relative;
-        font-weight: 400;
-        width: 90px;
-        //display: block;
-        text-align: center;
-        i {
-            text-align: center;
-            //width: 100%;
-            //font-size: 30px; //24
-            font-size: 42px; //24
-        }
-        &:hover {
-            color: @hoverColor;
-        }
-        &.left {
-            position: absolute;
-            left: 20px;
-            padding-bottom: 20px;
-        }
-        &.right {
-            position: absolute;
-            right: 20px;
-            padding-bottom: 20px;
-        }
-    }
-}
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
-}
-.overlay {
-    &.active {
-        visibility: visible;
-        animation: fadeIn @slideDuration ease;
-        z-index: 100;
-    }
-    animation: fadeIn @slideDuration ease reverse;
-    visibility: hidden;
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(18, 19, 20, 0.9);
-    z-index: 10;
-}
-.cursor-default {
-    cursor: default;
-}
-@avatar-size: 128px;
-.header {}
-.header-artist {
-    background-color: @background;
-    .header-background {
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        height: 100%;
-        //position: absolute;
-        width: 100%;
-    }
-    section {
-        // min-width: 610px;
-        //height: @avatar-size + 35px;
-        height: 275px;
-    }
-    .nav {
-        height: 45px;
-    }
-    .container {
-        width: 100%;
-        height: 100%;
-        padding: 16px 20px 0 20px;
-        padding-top: 129px;
-        position: relative;
-        margin: 0px;
-        background-color: rgba(0, 0, 0, 0.50);
-    }
-    .img-wrapper {
-        width: @avatar-size;
-        height: @avatar-size;
-        float: left;
-        padding-bottom: 16px;
-        position: relative;
-        .verified {
-            bottom: 9%;
-            right: 20%;
-            //bottom: 14%;
-            color: @azul;
-            font-size: 25px;
-            height: 20px;
-            line-height: 20px;
-            margin: 0 -10px -10px 0;
-            position: absolute;
-            //right: 23%;
-            width: 20px;
-        }
-    }
-    .avatar {
-        top: 0;
-        left: 0;
-        bottom: auto;
-        right: auto;
-        width: 100%;
-        height: 100%;
-        border-radius: 500px;
-        background-repeat: no-repeat;
-        background-position: center;
-        background-size: cover;
-        position: absolute;
-    }
-    .artist-info {
-        padding-top: 16px;
-        padding-left: 146px;
-        padding-right: 100px;
-        margin-left: -130px;
-        float: left;
-        .button {
-            margin-right: 8px;
-        }
-        .button-play {
-            padding-left: 36px;
-        }
-    }
-    .artist-controllers {
-        padding-top: 10px;
-    }
-    .artist-title {
-        margin: 0;
-        white-space: nowrap;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-    + .section-divider {
-        background-color: @background;
-    }
-    .navbar-nav {
-        padding: 0 20px;
-    }
-}
-.button {
-    background: rgba(0, 0, 0, .2);
-    border: 1px solid #88898c;
-    border-radius: 500px;
-    color: #dfe0e6;
-    //cursor: default;
-    display: inline-block;
-    font-size: 12px;
-    font-weight: 400;
-    height: 28px;
-    letter-spacing: 1.5px;
-    line-height: 26px;
-    margin-bottom: 0;
-    padding: 0 20px;
-    position: relative;
-    text-align: center;
-    text-transform: uppercase;
-    vertical-align: middle;
-    white-space: nowrap;
-    i {
-        left: 16px;
-        position: absolute;
-    }
-    span {
-        padding-left: 10px;
-        padding-right: 10px;
-        //padding-top: 1px;
-    }
-    &:hover {
-        color: @branco;
-        border-color: @branco;
-    }
-}
-.button-primary {
-    background-color: @verde!important;
-    border-color: @verde!important;
-}
-.button-primary:hover {
-    background-color: @verdeLimao!important;
-    border-color: @verdeLimao!important;
-}
-.album-title > .tunigo-label {
-    font-size: 40px;
-    &.album_title {
-        font-size: 48px;
-        line-height: normal;
-    }
-}
-.album-cover {
-    margin-left: 20px;
-    margin-top: 25px;
-    position: relative;
-    //width: calc(~'80% - @{album-details-width}');
-    //padding-bottom: calc(~'80% - @{album-details-width}'); //OITENTA POR CENTO PQ O CONTAINTER TA COM WIDTH 80%
-    width: 40%;
-    padding-bottom: 40%;
-    height: 0;
-}
-.tracklist-album {
-    color: @cinza;
-    table-layout: fixed;
-    width: 100%;
-}
-.tl-header th {
-    border-top: 0;
-    letter-spacing: 1px;
-    line-height: 28px;
-    text-transform: uppercase;
-    vertical-align: bottom;
-    cursor: default;
-}
-.tl-header th,
-.tl-cell {
-    border-top: 1px solid #222326;
-    position: relative;
-    padding: 12px 12px 0 12px;
-    //cursor: pointer;
-}
-.tl-header th {
-    padding: 0 0 0 12px;
-}
-.tl-number,
-.tl-time,
-.tl-listen-count {
-    -webkit-font-feature-settings: 'tnum';
-    -moz-font-feature-settings: 'tnum';
-    -ms-font-feature-settings: 'tnum';
-    font-feature-settings: 'tnum';
-}
-.tl-number,
-.tl-empty,
-.tl-play {
-    width: 40px;
-}
-.tl-highlight {
-    color: #dfe0e6;
-}
-.h-label {
-    color: #88898c;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    font-size: 12px;
-}
-.tl-cell,
-.tl-cell>div {
-    //overflow: hidden; IDK!!!!
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-.tl-row:hover .tl-cell {
-    background: #1c1c1f;
-}
-.tl-cell {
-    background: #121314;
-    height: 50px;
-}
-.tl-row:hover .tl-highlight {
-    color: #fbfbfc;
-}
-table tr td a {
-    display: block;
-    height: 100%;
-    width: 100%;
-    &:hover,
-    &:visited,
-    &:active,
-    &:focus {
-        text-decoration: none;
-        border: none;
-    }
-}
-.tb-tracks {
-    font-size: 24px;
-    tr td div {
-        padding: 12px 12px 0 0;
-        &.tl-cell {
-            height: 60px;
-        }
-    }
-}
-.table-link {
-    position: absolute;
-    left: 0;
-    top: 0;
-    width: 100%;
-    height: 100%;
-    padding: 0 0 0 0;
-    margin: 0 0 0 0;
-}
-.clickable {
-    cursor: pointer;
-}
-.artist-container {
-    width: 80%;
-}
-//gamb
-.section-divider.pre-album-title {
-    margin-bottom: 8px;
-}
-.tl-name-with-featured {
-    padding-left: 22px;
-}
-.nav {
-    margin-left: 0;
-    margin-bottom: 0;
-    padding-left: 0;
-    list-style: none;
-    border-bottom: 1px solid #222326;
-    background-color: rgba(0, 0, 0, 0.8);
-}
-.nav>li:first-child,
-.nav>li:first-child .navbar-text {
-    margin-left: 0;
-}
-.navbar-nav>li {
-    float: left;
-}
-.nav>li {
-    position: relative;
-    display: block;
-    margin: 0 15px;
-    float: left;
-}
-.nav>li.active>a {
-    color: #dfe0e6;
-}
-.navbar-nav>li>a {
-    line-height: 44px;
-}
-.navbar-nav>li>a {
-    line-height: 19px;
-}
-.nav>li>a {
-    position: relative;
-    display: block;
-    line-height: 44px;
-    color: #88898c;
-    text-transform: uppercase;
-    letter-spacing: 1.1px;
-    font-size: 14px;
-    transition: color .2s;
-    border-bottom: none;
-}
-.nav>li.active>a:after {
-    background-color: #84bd00;
-}
-.nav>li>a:after {
-    content: ' ';
-    background-color: transparent;
-    bottom: 0;
-    height: 2px;
-    left: 0;
-    position: absolute;
-    width: 100%;
-    transition: background-color .5s;
-}
-a {
-    color: #dfe0e6;
-    text-decoration: none;
-    cursor: pointer;
-    border-bottom: 1px solid transparent;
-}
+      //tudo referente aos perfis
+      .row {
+      	margin-left: -8px;
+      	margin-right: -8px;
+      	.col-md-4 {
+      		width: 33.33333333%;
+      		float: left;
+      		padding-left: 10px;
+      		padding-right: 10px;
+      		position: relative;
+      		min-height: 1px;
+      		.puff {
+      			overflow: hidden;
+      			background-color: #1c1c1f;
+      			display: block;
+      			overflow: hidden;
+      			position: relative;
+      			.mediaImages {
+      				padding-bottom: 55%;
+      			}
+      			.overflowBlur {
+      				overflow: hidden;
+      				-webkit-filter: blur(0px);
+      				-moz-filter: blur(0px);
+      				-o-filter: blur(0px);
+      				-ms-filter: blur(0px);
+      				filter: blur(0px);
+      			}
+      			.blur {
+      				position: absolute;
+      				top: 0;
+      				left: 0;
+      				right: 0;
+      				bottom: 0;
+      				overflow: hidden;
+      				-webkit-filter: blur(50px);
+      				-moz-filter: blur(50px);
+      				-o-filter: blur(50px);
+      				-ms-filter: blur(50px);
+      				filter: blur(50px);
+      				-webkit-transform: translate3d(0, 0, 0);
+      			}
+      			.background {
+      				position: absolute;
+      				top: -100px;
+      				bottom: -100px;
+      				left: -100px;
+      				right: -100px;
+      				opacity: 0.3;
+      				background-size: cover;
+      				background-color: #494955;
+      			}
+      			.mediaImage-2 {
+      				position: absolute;
+      				bottom: 22.75%;
+      				width: 27.5%;
+      				left: 50%;
+      				margin-left: -36.25%;
+      				opacity: 0.5;
+      				box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+      				-webkit-transition-property: bottom;
+      				-webkit-transition-duration: .5s;
+      			}
+      			.mediaImage-3 {
+      				position: absolute;
+      				bottom: 22.75%;
+      				width: 27.5%;
+      				left: 50%;
+      				margin-left: 8.75%;
+      				opacity: 0.5;
+      				box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+      				-webkit-transition-property: bottom;
+      				-webkit-transition-duration: .5s;
+      			}
+      			.mediaImage-1 {
+      				position: absolute;
+      				bottom: 13.75%;
+      				width: 37.5%;
+      				left: 50%;
+      				margin-left: -18.75%;
+      				box-shadow: 0px 1px 5px rgba(0, 0, 0, 0.4);
+      				-webkit-transition-property: bottom;
+      				-webkit-transition-duration: .5s;
+      			}
+      			.info {
+      				position: absolute;
+      				top: 69.18%;
+      				bottom: -1px;
+      				left: 0;
+      				right: 0;
+      				background-color: #222326;
+      				.ctx {
+      					position: relative;
+      					width: 100%;
+      					height: 100%;
+      				}
+      			}
+      			.media-object {
+      				margin-bottom: 15px;
+      				position: relative;
+      				.mo-wrapper {
+      					overflow: hidden;
+      					.mo-image-wrapper {
+      						height: 100%;
+      						overflow: hidden;
+      						padding-bottom: 100%;
+      						position: relative;
+      						.mo-image {
+      							background-repeat: no-repeat;
+      							-webkit-backface-visibility: hidden;
+      						}
+      						.mo-image,
+      						.mo-image-background,
+      						.mo-image-background-color {
+      							background-position: center;
+      							background-size: cover;
+      							height: 100%;
+      							position: absolute;
+      							width: 100%;
+      						}
+      					}
+      				}
+      			}
+      			.title {
+      				position: absolute;
+      				top: 14.29%;
+      				left: 0;
+      				right: 0;
+      				.center {
+      					margin: auto;
+      					display: table;
+      				}
+      				span {
+      					text-transform: uppercase;
+      					letter-spacing: 1.1px;
+      					font-size: 14px;
+      					line-height: 24px;
+      					margin: 0;
+      					font-weight: 400;
+      					color: #DFE0E6;
+      					text-align: center;
+      					transition: color 0.5s;
+      					border-bottom: 1px solid transparent;
+      				}
+      			}
+      			.names {
+      				position: absolute;
+      				top: 52%;
+      				left: 20px;
+      				right: 20px;
+      				height: 19px;
+      				overflow: hidden;
+      				div {
+      					font-size: 12px;
+      					line-height: 16px;
+      					color: #88898c;
+      					text-align: center;
+      				}
+      			}
+      		}
+      	}
+      }
+      
+      .media.genre .genreImage {
+      	padding-bottom: 100%;
+      	background-size: contain;
+      	background-repeat: no-repeat;
+      }
+      
+      .card {
+      	overflow: hidden;
+      	font-size: 14px;
+      	float: none;
+      	display: inline-block;
+      	vertical-align: top;
+      	white-space: normal;
+      	margin-bottom: 15px;
+      	position: relative;
+      	width: 16.66666667%;
+      	padding-left: 10px;
+      	padding-right: 10px;
+      	min-height: 1px;
+      }
+      
+      .img-wrapper {
+      	height: 100%;
+      	overflow: hidden;
+      	padding-bottom: 100%;
+      	position: relative;
+      	display: block;
+      	border: 0;
+      	.img-bg-wrapper {
+      		overflow: hidden;
+      		position: absolute;
+      		width: 102%;
+      		height: 102%;
+      		background-color: #000;
+      	}
+      }
+      
+      .card-image {
+      	background-repeat: no-repeat;
+      	background-position: center;
+      	background-size: cover;
+      	position: absolute;
+      	width: 100%;
+      	height: 100%;
+      }
+      
+      .media-profile-bg {
+      	position: relative;
+      	margin-top: -20%;
+      	margin-left: -20%;
+      	width: 140%;
+      	height: 140%;
+      	opacity: .3;
+      	background-size: cover;
+      }
+      
+      .card-image.media-image-internal {
+      	height: auto;
+      	width: auto;
+      	opacity: 1;
+      	background-size: cover;
+      	background-position: center;
+      	background-repeat: no-repeat;
+      	top: 10px;
+      	left: 10px;
+      	right: 10px;
+      	bottom: 10px;
+      	border-radius: 500px;
+      }
+      
+      .media-image-internal:after,
+      .media-placeholder:after {
+      	top: -10px;
+      	left: -10px;
+      	right: -10px;
+      	bottom: -10px;
+      }
+      
+      .media-image:hover .media-image-internal:after {
+      	opacity: 1;
+      }
+      
+      .media-image .media-image-internal:after {
+      	content: ' ';
+      	display: block;
+      	position: absolute;
+      	opacity: 0;
+      	background-color: rgba(0, 0, 0, .75);
+      	top: 0;
+      	left: 0;
+      	right: 0;
+      	bottom: 0;
+      }
+      
+      .card-info {
+      	background-color: @cardBackground;
+      	padding: 10px 8px 10px;
+      	//height: 63px;
+      	.info-wrapper {
+      		height: 100%;
+      		position: relative;
+      		.card-title {
+      			//border-bottom: none;
+      			line-height: 19px;
+      			max-height: 38px;
+      			overflow: hidden;
+      			position: relative;
+      			white-space: normal;
+      			.card-title-border {
+      				border-bottom: 1px solid transparent;
+      			}
+      		}
+      	}
+      }
+      
+      .profiles.show {
+      	width: 80%;
+      	.slider();
+      	padding-left: 4px;
+      	img {
+      		height: 150px
+      	}
+      }
+      
+      @slideDuration: .35s;
+      .slider {
+      	height: 100%;
+      	width: 100%;
+      	-webkit-backface-visibility: hidden;
+      	-webkit-transform-style: preserve-3d;
+      	//.translate3d(100%, 0, 0);
+      	.transition(.35s ease);
+      	animation-name: slide;
+      	animation-duration: @slideDuration;
+      	animation-direction: normal;
+      	animation-timing-function: ease-in-out;
+      	animation-fill-mode: forwards;
+      	background-color: transparent;
+      	&.active {
+      		width: 75%;
+      		//.translate3d(0%, 0, 0);
+      		animation-name: slide;
+      		animation-duration: @slideDuration;
+      		animation-direction: reverse;
+      		animation-timing-function: ease-in-out;
+      		animation-fill-mode: forwards;
+      	}
+      	display: block;
+      	position: fixed;
+      	right: 0;
+      	top: 0;
+      }
+      
+      @keyframes slide {
+      	from {
+      		.translate3d(0%, 0, 0)
+      	}
+      	to {
+      		.translate3d(100%, 0, 0)
+      	}
+      }
+      
+      @album-details-width: 50%;
+      .artist-page {
+      	background-color: @bodyBackground;
+      	overflow-y: auto;
+      	overflow-x: hidden;
+      	&.active {
+      		border-left: 1px solid @cardBackground;
+      		box-shadow: 0 0 5px 2px rgba(0, 0, 0, 0.5);
+      	}
+      	z-index: 100;
+      	.section-divider.album-title {
+      		h1 {
+      			font-family: "Proxima Nova Alt Bold";
+      		}
+      		padding-bottom: 0;
+      		padding-top: 0;
+      	}
+      	.container {
+      		width: 80%;
+      		max-width: 100%;
+      		position: absolute;
+      		> div {
+      			float: left;
+      		}
+      		.bio {
+      			padding-top: 10px;
+      			margin-left: 25px;
+      			p {
+      				font-size: 20px;
+      				line-height: normal;
+      			}
+      		}
+      		.arrows {
+      			position: relative;
+      			width: 100%;
+      			padding-top: 20px;
+      			padding-bottom: 20px;
+      			.h-label {
+      				text-align: center;
+      				display: block;
+      			}
+      		}
+      		&.media-tab {
+      			height: calc(~'100% - (320px + 40px)'); //320 de header e 40 das bordas GAMBIARRA
+      		}
+      		iframe {
+      			margin-top: 20px;
+      			margin-bottom: 20px;
+      		}
+      	}
+      	.album-details {
+      		position: relative;
+      		margin-left: 25px;
+      		margin-top: 25px;
+      		width: @album-details-width;
+      	}
+      	a.icon {
+      		height: 63px;
+      		border: none;
+      		color: @cinza; //cinza não selecionado
+      		text-decoration: none;
+      		//position: relative;
+      		font-weight: 400;
+      		width: 90px;
+      		//display: block;
+      		text-align: center;
+      		i {
+      			text-align: center;
+      			//width: 100%;
+      			//font-size: 30px; //24
+      			font-size: 42px; //24
+      		}
+      		&:hover {
+      			color: @hoverColor;
+      		}
+      		&.left {
+      			position: absolute;
+      			left: 20px;
+      			padding-bottom: 20px;
+      		}
+      		&.right {
+      			position: absolute;
+      			right: 20px;
+      			padding-bottom: 20px;
+      		}
+      	}
+      }
+      
+      @keyframes fadeIn {
+      	from {
+      		opacity: 0;
+      	}
+      	to {
+      		opacity: 1;
+      	}
+      }
+      
+      .overlay {
+      	&.active {
+      		visibility: visible;
+      		animation: fadeIn @slideDuration ease;
+      		z-index: 100;
+      	}
+      	animation: fadeIn @slideDuration ease reverse;
+      	visibility: hidden;
+      	position: fixed;
+      	top: 0;
+      	left: 0;
+      	width: 100%;
+      	height: 100%;
+      	background: rgba(18, 19, 20, 0.9);
+      	z-index: 10;
+      }
+      
+      .cursor-default {
+      	cursor: default;
+      }
+      
+      @avatar-size: 128px;
+      .header {}
+      
+      .header-artist {
+      	background-color: @background;
+      	.header-background {
+      		background-repeat: no-repeat;
+      		background-position: center;
+      		background-size: cover;
+      		height: 100%;
+      		//position: absolute;
+      		width: 100%;
+      	}
+      	section {
+      		// min-width: 610px;
+      		//height: @avatar-size + 35px;
+      		height: 275px;
+      	}
+      	.nav {
+      		height: 45px;
+      	}
+      	.container {
+      		width: 100%;
+      		height: 100%;
+      		padding: 16px 20px 0 20px;
+      		padding-top: 129px;
+      		position: relative;
+      		margin: 0px;
+      		background-color: rgba(0, 0, 0, 0.50);
+      	}
+      	.img-wrapper {
+      		width: @avatar-size;
+      		height: @avatar-size;
+      		float: left;
+      		padding-bottom: 16px;
+      		position: relative;
+      		.verified {
+      			bottom: 9%;
+      			right: 20%;
+      			//bottom: 14%;
+      			color: @azul;
+      			font-size: 25px;
+      			height: 20px;
+      			line-height: 20px;
+      			margin: 0 -10px -10px 0;
+      			position: absolute;
+      			//right: 23%;
+      			width: 20px;
+      		}
+      	}
+      	.avatar {
+      		top: 0;
+      		left: 0;
+      		bottom: auto;
+      		right: auto;
+      		width: 100%;
+      		height: 100%;
+      		border-radius: 500px;
+      		background-repeat: no-repeat;
+      		background-position: center;
+      		background-size: cover;
+      		position: absolute;
+      	}
+      	.artist-info {
+      		padding-top: 16px;
+      		padding-left: 146px;
+      		padding-right: 100px;
+      		margin-left: -130px;
+      		float: left;
+      		.button {
+      			margin-right: 8px;
+      		}
+      		.button-play {
+      			padding-left: 36px;
+      		}
+      	}
+      	.artist-controllers {
+      		padding-top: 10px;
+      	}
+      	.artist-title {
+      		margin: 0;
+      		white-space: nowrap;
+      		text-overflow: ellipsis;
+      		overflow: hidden;
+      	}
+      	+ .section-divider {
+      		background-color: @background;
+      	}
+      	.navbar-nav {
+      		padding: 0 20px;
+      	}
+      }
+      
+      .button {
+      	background: rgba(0, 0, 0, .2);
+      	border: 1px solid #88898c;
+      	border-radius: 500px;
+      	color: #dfe0e6;
+      	//cursor: default;
+      	display: inline-block;
+      	font-size: 12px;
+      	font-weight: 400;
+      	height: 28px;
+      	letter-spacing: 1.5px;
+      	line-height: 26px;
+      	margin-bottom: 0;
+      	padding: 0 20px;
+      	position: relative;
+      	text-align: center;
+      	text-transform: uppercase;
+      	vertical-align: middle;
+      	white-space: nowrap;
+      	i {
+      		left: 16px;
+      		position: absolute;
+      	}
+      	span {
+      		padding-left: 10px;
+      		padding-right: 10px;
+      		//padding-top: 1px;
+      	}
+      	&:hover {
+      		color: @branco;
+      		border-color: @branco;
+      	}
+      }
+      
+      .button-primary {
+      	background-color: @verde!important;
+      	border-color: @verde!important;
+      }
+      
+      .button-primary:hover {
+      	background-color: @verdeLimao!important;
+      	border-color: @verdeLimao!important;
+      }
+      
+      .album-title > .tunigo-label {
+      	font-size: 40px;
+      	&.album_title {
+      		font-size: 48px;
+      		line-height: normal;
+      	}
+      }
+      
+      .album-cover {
+      	margin-left: 20px;
+      	margin-top: 25px;
+      	position: relative;
+      	//width: calc(~'80% - @{album-details-width}');
+      	//padding-bottom: calc(~'80% - @{album-details-width}'); //OITENTA POR CENTO PQ O CONTAINTER TA COM WIDTH 80%
+      	width: 40%;
+      	padding-bottom: 40%;
+      	height: 0;
+      }
+      
+      .tracklist-album {
+      	color: @cinza;
+      	table-layout: fixed;
+      	width: 100%;
+      }
+      
+      .tl-header th {
+      	border-top: 0;
+      	letter-spacing: 1px;
+      	line-height: 28px;
+      	text-transform: uppercase;
+      	vertical-align: bottom;
+      	cursor: default;
+      }
+      
+      .tl-header th,
+      .tl-cell {
+      	border-top: 1px solid #222326;
+      	position: relative;
+      	padding: 12px 12px 0 12px;
+      	//cursor: pointer;
+      }
+      
+      .tl-header th {
+      	padding: 0 0 0 12px;
+      }
+      
+      .tl-number,
+      .tl-time,
+      .tl-listen-count {
+      	-webkit-font-feature-settings: 'tnum';
+      	-moz-font-feature-settings: 'tnum';
+      	-ms-font-feature-settings: 'tnum';
+      	font-feature-settings: 'tnum';
+      }
+      
+      .tl-number,
+      .tl-empty,
+      .tl-play {
+      	width: 40px;
+      }
+      
+      .tl-highlight {
+      	color: #dfe0e6;
+      }
+      
+      .h-label {
+      	color: #88898c;
+      	text-transform: uppercase;
+      	letter-spacing: 1px;
+      	font-size: 12px;
+      }
+      
+      .tl-cell,
+      .tl-cell>div {
+      	//overflow: hidden; IDK!!!!
+      	text-overflow: ellipsis;
+      	white-space: nowrap;
+      }
+      
+      .tl-row:hover .tl-cell {
+      	background: #1c1c1f;
+      }
+      
+      .tl-cell {
+      	background: #121314;
+      	height: 50px;
+      }
+      
+      .tl-row:hover .tl-highlight {
+      	color: #fbfbfc;
+      }
+      
+      table tr td a {
+      	display: block;
+      	height: 100%;
+      	width: 100%;
+      	&:hover,
+      	&:visited,
+      	&:active,
+      	&:focus {
+      		text-decoration: none;
+      		border: none;
+      	}
+      }
+      
+      .tb-tracks {
+      	font-size: 24px;
+      	tr td div {
+      		padding: 12px 12px 0 0;
+      		&.tl-cell {
+      			height: 60px;
+      		}
+      	}
+      }
+      
+      .table-link {
+      	position: absolute;
+      	left: 0;
+      	top: 0;
+      	width: 100%;
+      	height: 100%;
+      	padding: 0 0 0 0;
+      	margin: 0 0 0 0;
+      }
+      
+      .clickable {
+      	cursor: pointer;
+      }
+      
+      .artist-container {
+      	width: 80%;
+      }
+      
+      //gamb
+      .section-divider.pre-album-title {
+      	margin-bottom: 8px;
+      }
+      
+      .tl-name-with-featured {
+      	padding-left: 22px;
+      }
+      
+      .nav {
+      	margin-left: 0;
+      	margin-bottom: 0;
+      	padding-left: 0;
+      	list-style: none;
+      	border-bottom: 1px solid #222326;
+      	background-color: rgba(0, 0, 0, 0.8);
+      }
+      
+      .nav>li:first-child,
+      .nav>li:first-child .navbar-text {
+      	margin-left: 0;
+      }
+      
+      .navbar-nav>li {
+      	float: left;
+      }
+      
+      .nav>li {
+      	position: relative;
+      	display: block;
+      	margin: 0 15px;
+      	float: left;
+      }
+      
+      .nav>li.active>a {
+      	color: #dfe0e6;
+      }
+      
+      .navbar-nav>li>a {
+      	line-height: 44px;
+      }
+      
+      .navbar-nav>li>a {
+      	line-height: 19px;
+      }
+      
+      .nav>li>a {
+      	position: relative;
+      	display: block;
+      	line-height: 44px;
+      	color: #88898c;
+      	text-transform: uppercase;
+      	letter-spacing: 1.1px;
+      	font-size: 14px;
+      	transition: color .2s;
+      	border-bottom: none;
+      }
+      
+      .nav>li.active>a:after {
+      	background-color: #84bd00;
+      }
+      
+      .nav>li>a:after {
+      	content: ' ';
+      	background-color: transparent;
+      	bottom: 0;
+      	height: 2px;
+      	left: 0;
+      	position: absolute;
+      	width: 100%;
+      	transition: background-color .5s;
+      }
+      
+      a {
+      	color: #dfe0e6;
+      	text-decoration: none;
+      	cursor: pointer;
+      	border-bottom: 1px solid transparent;
+      }
