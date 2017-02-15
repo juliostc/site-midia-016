@@ -2,6 +2,14 @@
       .row {
       	margin-left: -8px;
       	margin-right: -8px;
+      	white-space: nowrap;
+      	word-spacing: 0;
+      	position: relative;
+      	left: 0%;
+      	-webkit-transition: left 0.5s ease-in-out;
+      	-moz-transition: left 0.5s ease-in-out;
+      	-o-transition: left 0.5s ease-in-out;
+      	transition: left 0.5s ease-in-out;
       	.col-md-4 {
       		width: 33.33333333%;
       		float: left;
@@ -10,11 +18,13 @@
       		position: relative;
       		min-height: 1px;
       		.puff {
-      			overflow: hidden;
       			background-color: #1c1c1f;
       			display: block;
       			overflow: hidden;
       			position: relative;
+      			&:hover {
+      				border-bottom: none;
+      			}
       			.mediaImages {
       				padding-bottom: 55%;
       			}
