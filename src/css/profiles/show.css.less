@@ -186,16 +186,17 @@
       	white-space: normal;
       	margin-bottom: 15px;
       	position: relative;
-      	width: 16.66666667%;
-      	padding-left: 10px;
-      	padding-right: 10px;
+      	//width: 16.66666667%;
+      	width: calc(~'(100% - 100px) / 6'); //100% da largura menos 80 px de margem entre os cards (20px de margem em 4 intervalos) dividio por 6 cards na fileira
+      	margin-left: 10px;
+      	margin-right: 10px;
       	min-height: 1px;
       	&.padding-fix {
       		&.right {
-      			padding-right: 0;
+      			margin-right: 0;
       		}
       		&.left {
-      			padding-left: 0;
+      			margin-left: 0;
       		}
       	}
       }
