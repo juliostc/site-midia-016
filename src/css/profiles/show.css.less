@@ -190,6 +190,14 @@
       	padding-left: 10px;
       	padding-right: 10px;
       	min-height: 1px;
+      	&.padding-fix {
+      		&.right {
+      			padding-right: 0;
+      		}
+      		&.left {
+      			padding-left: 0;
+      		}
+      	}
       }
       
       .img-wrapper {
@@ -799,4 +807,22 @@
       	text-decoration: none;
       	cursor: pointer;
       	border-bottom: 1px solid transparent;
+      }
+      
+      .clearfix:before,
+      .clearfix:after {
+      	content: '\0020';
+      	display: block;
+      	overflow: hidden;
+      	visibility: hidden;
+      	width: 0;
+      	height: 0;
+      }
+      
+      .clearfix:after {
+      	clear: both;
+      }
+      
+      .clearfix {
+      	zoom: 1;
       }

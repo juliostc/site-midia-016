@@ -1,248 +1,95 @@
-<div class="row fadeIn" style="opacity: 1;">
-    <div id="topLists" class="col-sm-4 col-md-4 col-lg-4" style="opacity: 1;">
-        <a class="puff" data-log-click="puff">
-            <div class="overflowBlur mediaImages">
-                <div class="blur">
-                    <div class="background" style="background-image: url(&quot;https://i.scdn.co/image/1420fecb9383e3ace18dbc3e06ccb84f6ff2e1fb&quot;);"></div>
-                </div>
-                <div id="topLists-mediaImage-2" class="mediaImage-2">
-                    <div class="media-object link media-object-">
-                        <div class="mo-wrapper">
-                            <div class="mo-image-wrapper" style="background-color: #222326">
-                                <svg class="mo-placeholder" viewBox="0 0 10 10" preserveAspectRatio="xMidYMid meet">
-                                    <text class="playlist-placeholder" x="5" y="9.8"></text>
-                                    <text class="album-placeholder" x="5" y="9.8"></text>
-                                    <text class="artist-placeholder" x="5" y="9.8"></text>
-                                    <text class="user-placeholder" x="5" y="9.8"></text>
-                                </svg>
-
-
-
-                                <div class="mo-image" style="background-image: url('https://i.scdn.co/image/91bfa5ae6742e518eb83bff5b87acbe6e90d0a23')">
-                                    <span class="mo-verified">
-        <span class="spoticon-check-16"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="topLists-mediaImage-3" class="mediaImage-3">
-                    <div class="media-object link media-object-">
-                        <div class="mo-wrapper">
-                            <div class="mo-image-wrapper" style="background-color: #222326">
-                                <svg class="mo-placeholder" viewBox="0 0 10 10" preserveAspectRatio="xMidYMid meet">
-                                    <text class="playlist-placeholder" x="5" y="9.8"></text>
-                                    <text class="album-placeholder" x="5" y="9.8"></text>
-                                    <text class="artist-placeholder" x="5" y="9.8"></text>
-                                    <text class="user-placeholder" x="5" y="9.8"></text>
-                                </svg>
-
-
-
-                                <div class="mo-image" style="background-image: url('https://i.scdn.co/image/1420fecb9383e3ace18dbc3e06ccb84f6ff2e1fb')">
-                                    <span class="mo-verified">
-        <span class="spoticon-check-16"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div id="topLists-mediaImage-1" class="mediaImage-1">
-                    <div class="media-object link media-object-">
-                        <div class="mo-wrapper">
-                            <div class="mo-image-wrapper" style="background-color: #222326">
-                                <svg class="mo-placeholder" viewBox="0 0 10 10" preserveAspectRatio="xMidYMid meet">
-                                    <text class="playlist-placeholder" x="5" y="9.8"></text>
-                                    <text class="album-placeholder" x="5" y="9.8"></text>
-                                    <text class="artist-placeholder" x="5" y="9.8"></text>
-                                    <text class="user-placeholder" x="5" y="9.8"></text>
-                                </svg>
-
-
-
-                                <div class="mo-image" style="background-image: url('https://i.scdn.co/image/7c41f9cb323018476fbcb769b80cbbfd60cce078')">
-                                    <span class="mo-verified">
-        <span class="spoticon-check-16"></span>
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="info">
-                    <div class="ctx">
-                        <div class="title">
-                            <div class="center">
-                                <span>Paradas</span>
-                            </div>
-                        </div>
-                        <div class="names">
-                            <div>As 50 mais tocadas no mundo, As 50 mais tocadas no Brasil, As 50 virais do Brasil</div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </a>
-    </div>
-
+<div class="row fadeIn clearfix" style="opacity: 1;">
+	<puff></puff>
+	<puff></puff>
+	<puff></puff>
 </div>
-
-
-
 <div class="section-divider">
-    <div>ARTISTAS</div>
+	<div>ARTISTAS</div>
 </div>
-
-
-<div class="card" ng-repeat="profile in ctrl.profiles">
-    <div class="img-wrapper">
-        <!--<a ng-href="{{getProfileUrl(profile.id)+" "}}" ng-title="{{profile.nome}}"> DEU ERRADO SEILA PQ-->
-        <a ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
-            <div class="img-bg-wrapper">
-                <div class="media-profile-bg" style="background-image: url(assets/profiles/{{profile.id}}/AVATAR.png);"></div>
-            </div>
-            <div class="card-image media-image-internal" style="background-image: url(assets/profiles/{{profile.id}}/AVATAR.png)"></div>
-        </a>
-    </div>
-    <div class="card-info">
-        <div class="info-wrapper">
-            <a class="card-title" ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
+<div class="card" ng-repeat="profile in ctrl.profiles" ng-class="{'padding-fix right':paddingFix($index)=='right', 'padding-fix left' : paddingFix($index)=='left'}">
+	<div class="img-wrapper">
+		<a ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
+			<div class="img-bg-wrapper">
+				<div class="media-profile-bg" style="background-image: url(assets/profiles/{{profile.id}}/AVATAR.png);"></div>
+			</div>
+			<div class="card-image media-image-internal" style="background-image: url(assets/profiles/{{profile.id}}/AVATAR.png)"></div>
+		</a>
+	</div>
+	<div class="card-info">
+		<div class="info-wrapper"> <a class="card-title" ng-href="#!/perfis/?{{profile.id}}" ng-title="{{profile.nome}}">
                                     {{profile.nome}}
-                                </a>
-        </div>
-    </div>
+                                </a> </div>
+	</div>
 </div>
 <a href="#!/perfis" class="cursor-default">
-    <div ng-class="{active: ctrl.isActive()}" class="overlay"></div>
+	<div ng-class="{active: ctrl.isActive()}" class="overlay"></div>
 </a>
-
 <!-- AQUI COMEÇA A TELA DO PERFIL -->
-
 <div ng-class="(ctrl.isActive()?'active ':'')+'slider artist-page'">
-    <div class="artist-container">
-        <header class="header header-artist">
-            <div class="header-background" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)">
-                <section>
-
-                    <div class="container">
-                        <div class="img-wrapper">
-                            <div class="avatar" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)"></div>
-                            <i class="verified material-icons">verified_user</i>
-                        </div>
-                        <div class="artist-info">
-                            <span class="h-label">Artista</span>
-                            <h1 class="artist-title">{{selectedProfile.nome}}</h1>
-                            <div class="artist-controllers">
-                                <a class="button button-primary button-play" ng-click="showMedia()">
-                                    <i class="material-icons">play_arrow</i> <span>PLAY</span>
-                                </a>
-                                <a class="button" ng-show="selectedProfile.rede_social" ng-href="{{selectedProfile.rede_social}}" target="_blank">SEGUIR</a>
-                            </div>
-                        </div>
-                    </div>
-
-                </section>
-
-                <ul class="nav navbar-nav " data-navbar="navbar " data-navbar-history-position="1 " data-navbar-active-id="overview " data-log-context="navbar ">
-
-                    <li ng-class="{active: !selectedProfile.tab || selectedProfile.tab == 'main'}" data-navbar-item-id="overview ">
-
-                        <a ng-click="hideMedia()">Visão geral</a>
-
-                    </li>
-
-                    <li ng-class="{active: selectedProfile.tab == 'media'}" data-navbar-item-id="related " ng-hide="{{selectedProfile.tipo_produto == 'NAO'}}">
-
-                        <a href ng-click="showMedia()">Produto Midiático</a>
-
-
-                    </li>
-
-
-                </ul>
-            </div>
-
-        </header>
-
-        <div class="container main-tab" ng-show="!selectedProfile.tab || (selectedProfile.tab == 'main')">
-
-
-            <div class="album-details ">
-                <div class="section-divider no-padding pre-album-title ">
-                    <h2>ÁLBUM</h2>
-                </div>
-                <span class="h-label ">2016</span>
-                <div class="section-divider section-divider-borderless album-title ">
-                    <h1 class="tunigo-label album_title ">{{selectedProfile.nome_album}}</h1>
-                </div>
-                <table class="tracklist-album ">
-                    <thead class="tl-header ">
-                        <tr>
-                            <th class="tl-number ">#</th>
-                            <!--<th class="tl-save "></th>-->
-                            <th class="tl-name-with-featured ">Faixa </th>
-                            <th class="tl-explicit "></th>
-                        </tr>
-                    </thead>
-                    <tbody class="tl-body tb-tracks ">
-                        <tr ng-repeat="track in ctrl.tracks " tabindex="track.index " class="tl-row clickable " data-contextmenu=" ">
-
-                            <td class="tl-cell tl-number ">
-                                <a ng-if="!track.exception " ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf " target="_blank " class="table-link "></a>
-                                <a ng-if="track.exception " href ng-click="showMedia()" class="table-link "></a>
-
-
-
-                                <span class="tl-number-wrap ">{{track.index + 1}}</span>
-
-                            </td>
-                            <td class="tl-cell tl-name-with-featured " colspan="2 ">
-                                <a ng-if="!track.exception " ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf " target="_blank " class="table-link "></a>
-                                <a ng-if="track.exception " href ng-click="showMedia()" class="table-link "></a>
-
-
-
-                                <div class="tl-highlight ">
-                                    {{track.title}}<span class="tl-featuring "></span></div>
-
-                            </td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <div class="album-cover ">
-                <div class="card-image " style="background-image: url(assets/profiles/{{selectedProfile.id}}/CAPA.png) "></div>
-            </div>
-
-
-            <div class="bio ">
-                <div class="section-divider no-padding pre-album-title ">
-                    <h2>Biografia</h2>
-                </div>
-                <p>{{selectedProfile.bio}}</p>
-
-
-            </div>
-
-            <div class="arrows">
-                <a class="icon left" ng-href="#!/perfis/?{{previousAndNext[0].id}}" ng-show="previousAndNext[0]">
-                    <i class="material-icons">skip_previous</i>
-                    <span class="h-label">Anterior</span>
-                </a>
-                <a class="icon right" ng-href="#!/perfis/?{{previousAndNext[1].id}}" ng-show="previousAndNext[1]">
-                    <i class="material-icons">skip_next</i>
-                    <span class="h-label">Próximo</span>
-                </a>
-            </div>
-
-        </div>
-
-        <div class="container media-tab" ng-show="selectedProfile.tab== 'media'">
-            <iframe ng-src="{{iframeUrl}}" frameborder="0" allowfullscreen></iframe>
-        </div>
-
-    </div>
+	<div class="artist-container">
+		<header class="header header-artist">
+			<div class="header-background" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)">
+				<section>
+					<div class="container">
+						<div class="img-wrapper">
+							<div class="avatar" style="background-image: url(assets/profiles/{{selectedProfile.id}}/AVATAR.png)"></div> <i class="verified material-icons">verified_user</i> </div>
+						<div class="artist-info"> <span class="h-label">Artista</span>
+							<h1 class="artist-title">{{selectedProfile.nome}}</h1>
+							<div class="artist-controllers">
+								<a class="button button-primary button-play" ng-click="showMedia()"> <i class="material-icons">play_arrow</i> <span>PLAY</span> </a> <a class="button" ng-show="selectedProfile.rede_social" ng-href="{{selectedProfile.rede_social}}" target="_blank">SEGUIR</a> </div>
+						</div>
+					</div>
+				</section>
+				<ul class="nav navbar-nav " data-navbar="navbar " data-navbar-history-position="1 " data-navbar-active-id="overview " data-log-context="navbar ">
+					<li ng-class="{active: !selectedProfile.tab || selectedProfile.tab == 'main'}" data-navbar-item-id="overview "> <a ng-click="hideMedia()">Visão geral</a> </li>
+					<li ng-class="{active: selectedProfile.tab == 'media'}" data-navbar-item-id="related " ng-hide="{{selectedProfile.tipo_produto == 'NAO'}}"> <a href ng-click="showMedia()">Produto Midiático</a> </li>
+				</ul>
+			</div>
+		</header>
+		<div class="container main-tab" ng-show="!selectedProfile.tab || (selectedProfile.tab == 'main')">
+			<div class="album-details ">
+				<div class="section-divider no-padding pre-album-title ">
+					<h2>ÁLBUM</h2> </div> <span class="h-label ">2016</span>
+				<div class="section-divider section-divider-borderless album-title ">
+					<h1 class="tunigo-label album_title ">{{selectedProfile.nome_album}}</h1> </div>
+				<table class="tracklist-album ">
+					<thead class="tl-header ">
+						<tr>
+							<th class="tl-number ">#</th>
+							<!--<th class="tl-save "></th>-->
+							<th class="tl-name-with-featured ">Faixa </th>
+							<th class="tl-explicit "></th>
+						</tr>
+					</thead>
+					<tbody class="tl-body tb-tracks ">
+						<tr ng-repeat="track in ctrl.tracks " tabindex="track.index " class="tl-row clickable " data-contextmenu=" ">
+							<td class="tl-cell tl-number ">
+								<a ng-if="!track.exception " ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf " target="_blank " class="table-link "></a>
+								<a ng-if="track.exception " href ng-click="showMedia()" class="table-link "></a> <span class="tl-number-wrap ">{{track.index + 1}}</span> </td>
+							<td class="tl-cell tl-name-with-featured " colspan="2 ">
+								<a ng-if="!track.exception " ng-href="assets/profiles/{{selectedProfile.id}}/{{track.url}}.pdf " target="_blank " class="table-link "></a>
+								<a ng-if="track.exception " href ng-click="showMedia()" class="table-link "></a>
+								<div class="tl-highlight "> {{track.title}}<span class="tl-featuring "></span></div>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+			<div class="album-cover ">
+				<div class="card-image " style="background-image: url(assets/profiles/{{selectedProfile.id}}/CAPA.png) "></div>
+			</div>
+			<div class="bio ">
+				<div class="section-divider no-padding pre-album-title ">
+					<h2>Biografia</h2> </div>
+				<p>{{selectedProfile.bio}}</p>
+			</div>
+			<div class="arrows">
+				<a class="icon left" ng-href="#!/perfis/?{{previousAndNext[0].id}}" ng-show="previousAndNext[0]"> <i class="material-icons">skip_previous</i> <span class="h-label">Anterior</span> </a>
+				<a class="icon right" ng-href="#!/perfis/?{{previousAndNext[1].id}}" ng-show="previousAndNext[1]"> <i class="material-icons">skip_next</i> <span class="h-label">Próximo</span> </a>
+			</div>
+		</div>
+		<div class="container media-tab" ng-show="selectedProfile.tab== 'media'">
+			<iframe ng-src="{{iframeUrl}}" frameborder="0" allowfullscreen></iframe>
+		</div>
+	</div>
 </div>
