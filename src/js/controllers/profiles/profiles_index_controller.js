@@ -2,9 +2,24 @@
 	"use strict";
 	angular.module("controllers.profiles.index", [
     "services.profile"
-  ]).controller("ProfilesIndexController", function (PageSettings, profileService, $routeParams, $location, $scope, $sce, $window) {
+  ]).controller("ProfilesIndexController", function (PageSettings, profileService, $routeParams, $location, $scope, $sce, $window, $rootScope) {
 		PageSettings.setSubtitle("Perfis");
-		this.profiles = profileService.findAll();
+		this.profiles = {};
+		profileService.findAll(function (response) {
+			$scope.profiles = response.data;
+			//$scope.$apply();
+			$scope.$watch(function () {
+				return $routeParams;
+			}, function (routeParams) {
+				$scope.currentID = Object.keys(routeParams)[0];
+				$scope.selectedProfile = profileService.findById($scope.profiles, $scope.currentID);
+				if ($scope.selectedProfile) {
+					$scope.firstClick = true;
+					$scope.iframeUrl = $sce.trustAsResourceUrl($scope.selectedProfile.link_produto);
+				}
+				$scope.previousAndNext = profileService.previousAndNext($scope.profiles, $scope.selectedProfile);
+			});
+		});
 		$scope.getProfileUrl = function (id) {
 			return profileService.getProfileUrl(id);
 		};
@@ -45,17 +60,21 @@
 				, index: 4
                 }
             ];
-		this.currentID = Object.keys($routeParams)[0];
-		$scope.selectedProfile = profileService.findById(this.currentID);
+		//$scope.selectedProfile = undefined;
 		this.isActive = function () {
 			return !!($scope.selectedProfile);
 		};
-		if ($scope.selectedProfile) {
-			$scope.iframeUrl = $sce.trustAsResourceUrl($scope.selectedProfile.link_produto);
+		this.firstClick = function () {
+			return !!($scope.firstClick);
 		}
-		$scope.previousAndNext = profileService.previousAndNext($scope.selectedProfile);
+		$scope.hideMedia = function () {
+			$scope.selectedProfile.tab = 'main';
+		};
 		$scope.showMedia = function () {
 			var perfil = $scope.selectedProfile;
+			if (perfil.tipo_produto == 'NAO') {
+				return;
+			}
 			if (perfil.tipo_produto == 'EMBED') {
 				perfil.tab = 'media';
 			}
@@ -63,22 +82,24 @@
 				$window.open(perfil.link_produto, '_blank');
 			}
 		};
-		$scope.hideMedia = function () {
-			$scope.selectedProfile.tab = 'main';
-		};
 	}).component('puff', {
 		templateUrl: 'components/puff.html'
 		, bindings: {
 			covers: '<'
+			, title: '@'
+			, text: "@"
 		}
 		, controller: function (profileService, $scope) {
 			var exceptions = [];
 			$scope.covers = [];
-			for (var i = 0; i < 3; i++) {
-				var profile = profileService.getRandomProfile(exceptions);
-				$scope.covers[i] = "assets/profiles/" + profile.id + "/CAPA.png";
-				exceptions.push(profile);
-			}
+			profileService.findAll(function (response) {
+				var profiles = response.data;
+				for (var i = 0; i < 3; i++) {
+					var profile = profileService.getRandomProfile(profiles, exceptions);
+					$scope.covers[i] = "assets/profiles/" + profile.id + "/CAPA.jpg";
+					exceptions.push(profile);
+				}
+			});
 		}
 	});
 })(window.angular);
